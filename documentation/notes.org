@@ -1,0 +1,28 @@
+
+* Notes
+
+  - mirror Chef's REST API in Elisp
+
+#+BEGIN_SRC elisp
+  (chef/<method> server <URL path> <params...>)
+
+  (let
+      ((server (get-config))
+       ((webserver '((name . "web012.local") (run_list . '("role[base]")) ...))))
+
+    (chef/get server "/cookbooks/apache2/3.4.1")
+
+    (chef/put server "/node/webserver" webserver)
+
+    (chef/get server "/environment/production")
+
+    (chef/get server "/data/stars/rigel")
+
+    (map '(chef server :get "/node" name)
+         (chef server :get "/nodes"))
+   )
+#+END_SRC
+
+  - given that Elisp lacks many critical functions we need, what if we
+    start a Ruby interpreter in a buffer, then send Chef Ruby API code
+    to it and receive data in response?

@@ -1,0 +1,78 @@
+* Meta
+:PROPERTIES:
+:chef_server_url: "https://chef.local/"
+:client_key: "/etc/chef/dendrite.pem"
+:node_name: "dendrite.local"
+:END:
+
+* Nodes
+
+** chef-server.local
+:PROPERTIES:
+:run_list: '(chef-server::default ...)
+:END:
+
+** compute.local
+
+** network.local
+
+** controller.local
+
+* Cookbooks
+
+** openstack-compute
+
+** openstack-common
+
+** database
+
+* Roles
+
+** openstack-controller
+:PROPERTIES:
+:run_list: '("role[openstack-base]" "recipe[mysql::default]" ...)
+:END:
+
+** openstack-compute
+:PROPERTIES:
+:run_list: '("recipe[openstack-compute::default]" ...)
+:END:
+
+** openstack-base
+
+* Environments
+
+** _default
+
+** staging
+:PROPERTIES:
+:name: "staging"
+:cookbook_versions: /hash/
+:default_attributes: /hash/
+:override_attributes: /hash/
+:END:
+
+** production
+:PROPERTIES:
+:name: "production"
+:cookbook_versions: /hash/
+:default_attributes: /hash/
+:override_attributes: /hash/
+:END:
+
+* Data Bags
+
+** openstack
+
+*** compute
+:PROPERTIES:
+:id: compute
+:defaults: /hash/
+:END:
+
+*** local
+:PROPERTIES:
+:id: local
+:networks: /hash/
+:END:
+
