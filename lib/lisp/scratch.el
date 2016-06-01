@@ -1,9 +1,10 @@
 (require 'json)
 
 (let ((default-directory "~/Development/github/maniaphobic/dendrite/chef"))
-  (rvm-use "2.2.1" "(default")
+  (rvm-use "2.2" "(default)")
   (start-process "irb" "irb" "irb")
   )
+;DISABLED;(delete-process "irb")
 
 (process-send-string "irb" "
 require 'chef/config'
@@ -17,3 +18,5 @@ Chef::Node.list
 )
 
 (process-mark (get-process "irb"))
+
+
