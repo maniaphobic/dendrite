@@ -2,7 +2,7 @@
 
 (let ((default-directory "~/Development/github/maniaphobic/dendrite/chef"))
   (rvm-use "2.2" "(default)")
-  (start-process "irb" "irb" "irb")
+  (start-process "irb" "irb" "irb" "--noprompt")
   )
 ;DISABLED;(delete-process "irb")
 
